@@ -5,7 +5,7 @@ class InformationErrorController < ApplicationController
     require "prawn/table"
     require "prawn"
 
-    Prawn::Document.generate("test.pdf") do |pdf|
+    Prawn::Document.generate("information.pdf") do |pdf|
       table_data = Array.new
       table_data << ["Titulo", "Autor"]
       @programming_errors.each do |p|
