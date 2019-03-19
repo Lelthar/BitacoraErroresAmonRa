@@ -1,0 +1,47 @@
+<%= form_with(model: programming_error, local: true) do |form| %>
+  <% if programming_error.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(programming_error.errors.count, "error") %> prohibited this error from being saved:</h2>
+
+      <ul>
+      <% programming_error.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :message %>
+    <%= form.text_field :message %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cause %>
+    <%= form.text_field :cause %>
+  </div>
+
+  <div class="field">
+    <%= form.label :solution %>
+    <%= form.text_field :solution %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reference %>
+    <%= form.text_field :reference %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  message: MyString
+  cause: MyString
+  solution: MyString
+  reference: MyString
+  users: one
+
+two:
+  code: MyString
+  message: MyString
+  cause: MyString
+  solution: MyString
+  reference: MyString
+  users: two

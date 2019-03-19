@@ -1,0 +1,50 @@
+<%= form_tag "/data_users/create", method: :post do %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= label_tag "Nombre" %>
+    <%= text_field_tag "user[name]", @user.name ,required: true%>
+  </div>
+
+  <div>
+    <%= label_tag "Apellidos" %>
+    <%= text_field_tag "user[last_name]", @user.last_name ,required: true%>
+  </div>
+
+  <div>
+    <%= label_tag "Nombre de usuario" %>
+    <%= text_field_tag "user[nick_name]", @user.nick_name ,required: true%>
+  </div>
+
+  <div>
+    <%= label_tag "Correo" %>
+    <%= email_field_tag "user[email]", @user.email ,required: true%>
+  </div>
+
+  <div>
+    <%= label_tag "Tipo" %>
+    <%= text_field_tag "user[tipo]", @user.tipo ,required: true%>
+  </div>
+
+  <div>
+    <%= label_tag "Contraseña" %>
+    <%= password_field_tag "user[password]", @user.password ,required: true%>
+  </div>
+
+  <div>
+    <%= label_tag "Confirmación de contraseña" %>
+    <%= password_field_tag "user[password_confirmation]", @user.password_confirmation ,required: true%>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Registrar" %>
+  </div>
+<% end %>
