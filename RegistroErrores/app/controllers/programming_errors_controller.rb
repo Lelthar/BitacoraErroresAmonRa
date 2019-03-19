@@ -42,24 +42,33 @@ class ProgrammingErrorsController < ApplicationController
   # PATCH/PUT /errors/1
   # PATCH/PUT /errors/1.json
   def update
-    respond_to do |format|
-      if @programming_error.update(programming_error_params)
-        format.html { redirect_to @programming_error, notice: 'Error was successfully updated.' }
-        format.json { render :show, status: :ok, location: @programming_error }
-      else
-        format.html { render :edit }
-        format.json { render json: @programming_error.errors, status: :unprocessable_entity }
+
+    if current_user.tipo == "administrador" || current_user.id == @programming_error.user.id
+      respond_to do |format|
+        if @programming_error.update(programming_error_params)
+          format.html { redirect_to @programming_error, notice: 'Error was successfully updated.' }
+          format.json { render :show, status: :ok, location: @programming_error }
+        else
+          format.html { render :edit }
+          format.json { render json: @programming_error.errors, status: :unprocessable_entity }
+        end
       end
+    else
+
     end
+
+    
   end
 
   # DELETE /errors/1
   # DELETE /errors/1.json
   def destroy
-    @programming_error.destroy
-    respond_to do |format|
-      format.html { redirect_to programming_errors_url, notice: 'Error was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_user.tipo == "administrador"
+      @programming_error.destroy
+      respond_to do |format|
+        format.html { redirect_to programming_errors_url, notice: 'Error was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
