@@ -1,3 +1,4 @@
+
 class ProgrammingErrorsController < ApplicationController
   before_action :set_programming_error, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
@@ -5,7 +6,15 @@ class ProgrammingErrorsController < ApplicationController
   # GET /errors
   # GET /errors.json
   def index
-    @programming_errors = ProgrammingError.all
+    #@programming_errors = ProgrammingError.search_programming_error("")
+    @search_text = params[:search]
+    #puts "acaaa: ",@search_text
+    if @search_text && @search_text != ""
+      @programming_errors = ProgrammingError.search_by_information(@search_text)
+    else
+       @programming_errors = ProgrammingError.all
+    end
+     
   end
 
   # GET /errors/1

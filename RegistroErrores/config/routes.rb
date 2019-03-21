@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   post "/data_users/create", to: "users/administrators#create"
   post "/data_users/update", to: "users/administrators#update"
   delete "/data_users/:id(.:format)", :to => "users/administrators#destroy"
-
   root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
